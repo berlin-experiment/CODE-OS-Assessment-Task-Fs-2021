@@ -77,10 +77,10 @@ class PewPew:
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens.aliens, True, True)
 
-        if not self.aliens:
+        if not self.ai_game.aliens.aliens:
             # Destroy existing bullets and create new fleet.
             self.bullets.empty()
-            self.aliens.create_fleet()
+            self.aliens._create_fleet()
 
         # # checking for player-bullet collision
         # collisions = pygame.sprite.groupcollide(

@@ -59,11 +59,9 @@ class CreateFleet(Sprite):
         self._check_fleet_edges()
         self.aliens.update()
 
-        # Check for any bullets that have hit alien.
-        #   If so, get rid of the bullet and the alien.
-
-        # collisions = pygame.sprite.groupcollide(
-        #     self.bullets, self.alien, True, True)
+        # Look for alien-ship collisions.
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("Ship hit!!!")
 
     def _check_fleet_edges(self):
         """Respond appropriately if any Aliens have reached an edge."""
