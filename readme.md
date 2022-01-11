@@ -4,17 +4,14 @@ I have built - or rather half built - a DUNE inspired space invader game rather 
 
 While we were shown how to download VS Code, I prefer to use PyCharm and did so for this task.
 
-
-* All images were drawn by me using [Photoscape X](http://x.photoscape.org/) and pure talent.
-** PS. My pygame assessment is inspired by DUNE by Frank Herbert and the names in the game are just Arabic translations to avoid copyright infringement.
+- All images were drawn by me using [Photoscape X](http://x.photoscape.org/) and pure talent.
+  \*\* PS. My pygame assessment is inspired by DUNE by Frank Herbert and the names in the game are just Arabic translations to avoid copyright infringement.
 
 ## The Code
-
 
 While some things may appear familiar, others I adapted to make the project more unique and personal to myself.
 
 The Game is nowhere near complete, butI have tried to focus on structuring the game and code in a way I feel makes more sense and easier to follow, based on what I have seen on Stackoverflow and watch tutorials online.
-
 
 ```python
 import sys
@@ -22,12 +19,13 @@ import pygame
 
 from .general.settings.settings import Settings
 from .general.bg import Background
-from .player.alyaesub import Alyaesub
-from .intruders.dakhil import CreateFleet
+from .player.ship import Ship
+from .intruders.alien import CreateFleet
 from .general.bullet import PewPew
 ```
 
 ## References
+
 I used the following to better my understanding of Python, PyGame and Coding Concepts to be able to build the game.
 
 1. Coding With Russ. (2021). Pygame Space Invaders Beginner Tutorial in Python - PART 1 | Initial Setup [Image]. Retrieved 29 October 2021, from https://www.youtube.com/watch?v=f4coFYbYQzw&t=20s.

@@ -3,8 +3,8 @@ import pygame
 
 from .general.settings.settings import Settings
 from .general.bg import Background
-from .player.alyaesub import Alyaesub
-from .intruders.dakhil import CreateFleet
+from .player.ship import Ship
+from .intruders.alien import CreateFleet
 from .general.bullet import PewPew
 
 
@@ -24,9 +24,9 @@ class AlrimalGame:
         self.Background = pygame.sprite.Group()
         self.Background.add(self.bg)
         # creating player
-        self.alyaesub = Alyaesub(self)
+        self.ship = Ship(self)
         # creating enemy fleet
-        self.dakhils = CreateFleet(self, self.alyaesub)
+        self.aliens = CreateFleet(self, self.ship)
         # creating bullet
         self.bullets = PewPew(self)
 
@@ -40,8 +40,8 @@ class AlrimalGame:
             self._check_events()
             self.bg.update()
             self.bullets.update_bullets()
-            self.alyaesub.update()
-            self.dakhils.update_dakhils()
+            self.ship.update()
+            self.aliens.update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -57,9 +57,9 @@ class AlrimalGame:
     def _check_keydown_events(self, event):
         """Respond to key press"""
         if event.key == pygame.K_RIGHT:
-            self.alyaesub.moving_right = True
+            self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
-            self.alyaesub.moving_left = True
+            self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
         elif event.key == pygame.K_SPACE:
@@ -68,17 +68,17 @@ class AlrimalGame:
     def _check_keyup_events(self, event):
         """Respond to key releases."""
         if event.key == pygame.K_RIGHT:
-            self.alyaesub.moving_right = False
+            self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
-            self.alyaesub.moving_left = False
+            self.ship.moving_left = False
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.Background.draw(self.screen)
-        self.dakhils.draw(self.screen)
+        self.aliens.draw(self.screen)
         self.bullets.draw()
-        self.alyaesub.blitme()
+        self.ship.blitme()
 
         # Make the most recently drawn screen visible.
         pygame.display.flip()

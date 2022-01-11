@@ -4,10 +4,10 @@ from pygame.sprite import Sprite
 
 
 class Bullet(Sprite):
-    """A class to manage bullets fired from the alyaesub"""
+    """A class to manage bullets fired from the ship"""
 
     def __init__(self, ai_game, shooter):
-        """Create a bullet object at the alyaesub's current position."""
+        """Create a bullet object at the ship's current position."""
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
@@ -17,7 +17,7 @@ class Bullet(Sprite):
         # Create a bullet rect at (0, 0) and then set correct position.
         self.rect = pygame.Rect(0, 0, self.settings.bullet_width,
                                 self.settings.bullet_height)
-        self.rect.midtop = ai_game.alyaesub.rect.midtop
+        self.rect.midtop = ai_game.ship.rect.midtop
 
         # Store the bullet's position as a decimal value.
         self.y = float(self.rect.y)
@@ -45,8 +45,8 @@ class PewPew:
         super().__init__()
         self.ai_game = ai_game
         self.settings = ai_game.settings
-        self.alyaesub = ai_game.alyaesub
-        self.dakhils = ai_game.dakhils
+        self.ship = ai_game.ship
+        self.aliens = ai_game.aliens
         self.bullets = pygame.sprite.Group()
 
     def draw(self):
@@ -72,21 +72,21 @@ class PewPew:
         self._check_bullet_collisions()
 
     def _check_bullet_collisions(self):
-        """Respond to bullet-Dakhil collisions."""
-        # Remove any bullets and Dakhil that have collided.
+        """Respond to bullet-Alien collisions."""
+        # Remove any bullets and Alien that have collided.
         collisions = pygame.sprite.groupcollide(
-            self.bullets, self.dakhils.dakhils, True, True)
+            self.bullets, self.aliens.aliens, True, True)
 
-        if not self.dakhils:
+        if not self.aliens:
             # Destroy existing bullets and create new fleet.
             self.bullets.empty()
-            self.dakhils.create_fleet()
+            self.aliens.create_fleet()
 
         # # checking for player-bullet collision
         # collisions = pygame.sprite.groupcollide(
-        #     self.bullets, self.alyaesub, True, True)
+        #     self.bullets, self.ship, True, True)
         #
-        # if not self.alyaesub:
+        # if not self.ship:
         #     # Destroy existing bullets and create new fleet.
         #     self.ai_game.reduce_health()
 
