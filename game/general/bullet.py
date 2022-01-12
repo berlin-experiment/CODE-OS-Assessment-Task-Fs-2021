@@ -77,18 +77,14 @@ class PewPew:
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens.aliens, True, True)
 
+        if collisions:
+            for aliens in collisions.values():
+                self.ai_game.stats.score += 5 * len(aliens)
+                self.ai_game.sb.prep_score()
+
         if not self.ai_game.aliens.aliens:
+            self.ai_game.stats.level_up()
+            self.ai_game.sb.prep_score()
             # Destroy existing bullets and create new fleet.
             self.bullets.empty()
             self.aliens._create_fleet()
-
-        # # checking for player-bullet collision
-        # collisions = pygame.sprite.groupcollide(
-        #     self.bullets, self.ship, True, True)
-        #
-        # if not self.ship:
-        #     # Destroy existing bullets and create new fleet.
-        #     self.ai_game.reduce_health()
-
-# still need to do
-# Both player and alien must shoot

@@ -1,12 +1,14 @@
 # player
 import pygame
+from time import sleep
 
-# Ship means dragonfly in Arabic and is based on the Ornithopter from Dune
+
+# Ship is based on the Ornithopter from Dune
 class Ship:
     """CLass to manage the ship"""
     def __init__(self, ai_game):
         """Initialize the ship's and set its starting position."""
-
+        self.ai_game = ai_game
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
@@ -52,11 +54,23 @@ class Ship:
 
         self.rect.x = self.x
 
+    def center_ship(self):
+        """Center the ship on the screen."""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
+
     def blitme(self):
         """Draw the ship aircraft at its current location."""
         self.screen.blit(self.image, self.rect)
 
-
-# Still need to do
-# Health bar
-# Collisions with intruder = DEATH
+    def ship_hit(self):
+        self.ai_game.stats.ships_left -= 1
+        self.ai_game.sb.prep_score()
+        # Get rid of any remaining aliens and bullets.
+        self.ai_game.aliens.aliens.empty()
+        self.ai_game.bullets.bullets.empty()
+        # Create a new fleet and center the ship.
+        self.ai_game.aliens._create_fleet()
+        self.center_ship()
+        # Pause.
+        sleep(1)

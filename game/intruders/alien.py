@@ -2,7 +2,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-# Ship means Intruder in Arabic and is based on the Harkonnen from Dune
+# Ship is based on the Harkonnen from Dune
 class Alien(Sprite):
     """A class to represent a single Alien frigate in the fleet."""
 
@@ -61,7 +61,14 @@ class CreateFleet(Sprite):
 
         # Look for alien-ship collisions.
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
-            print("Ship hit!!!")
+            self.ai_game.ship.ship_hit()
+
+        screen_rect = self.ai_game.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                # Treat this the same as if the ship got hit.
+                self.ai_game.ship.ship_hit()
+                break
 
     def _check_fleet_edges(self):
         """Respond appropriately if any Aliens have reached an edge."""
