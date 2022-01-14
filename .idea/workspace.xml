@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="481603b9-75b1-410a-8477-6f0e058ab7b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/game/general/game_stats.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game/general/scoreboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/general/menus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/general/power_up.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/general/settings/default_settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/bad_guy.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/game/assets/bad_guy.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/flying.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/game/assets/flying.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/ground_floor.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/game/assets/floor.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/please_work.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/game/assets/please_work.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/please_work2.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/game/assets/please_work2.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/ship.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/game/assets/ship.bmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/alrimal_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/alrimal_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/general/bg.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/general/bg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/general/bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/general/bullet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/general/game_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/general/game_stats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/general/scoreboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/general/scoreboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/general/settings/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/general/settings/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/intruders/alien.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/intruders/alien.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/player/ship.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/player/ship.py" afterDir="false" />
@@ -48,6 +58,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/game/assets" />
+      <recent name="$PROJECT_DIR$/game/general" />
+      <recent name="$PROJECT_DIR$/game/player" />
+      <recent name="$PROJECT_DIR$/game/intruders" />
+      <recent name="$PROJECT_DIR$/game/assets/images" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -88,6 +107,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -98,6 +128,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

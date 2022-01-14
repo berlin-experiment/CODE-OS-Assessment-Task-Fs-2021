@@ -16,7 +16,7 @@ class Ship:
         self.count = 0
 
         # Load the ship and get its rect.
-        self.image = pygame.image.load('assets/imgs/ship.bmp')
+        self.image = pygame.image.load('game/assets/ship.bmp')
         self.rect = self.image.get_rect()
 
         # Start each new ship at the bottom center of the screen. x
@@ -35,14 +35,14 @@ class Ship:
             if self.count < self.settings.flapcount:
                 self.count += 1
             else:
-                self.image = pygame.image.load('assets/imgs/please_work2.bmp')
+                self.image = pygame.image.load('game/assets/please_work2.bmp')
                 self.state = 0
                 self.count = 0
         else:
             if self.count < self.settings.flapcount:
                 self.count += 1
             else:
-                self.image = pygame.image.load('assets/imgs/please_work.bmp')
+                self.image = pygame.image.load('game/assets//please_work.bmp')
                 self.state = 1
                 self.count = 0
             # self.image = pygame.image.load('assets/imgs/please_work.bmp')
@@ -69,8 +69,14 @@ class Ship:
         # Get rid of any remaining aliens and bullets.
         self.ai_game.aliens.aliens.empty()
         self.ai_game.bullets.bullets.empty()
-        # Create a new fleet and center the ship.
-        self.ai_game.aliens._create_fleet()
+
         self.center_ship()
+        if self.ai_game.stats.ships_left < 0:
+            self.ai_game.stats.game_active = False
+            self.ai_game.active_menu = self.ai_game.retry_menu
         # Pause.
-        sleep(1)
+        else:
+            # Create a new fleet and center the ship.
+            self.ai_game.aliens.create_fleet()
+            sleep(1)
+

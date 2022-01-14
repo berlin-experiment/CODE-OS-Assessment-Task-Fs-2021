@@ -12,7 +12,7 @@ class Alien(Sprite):
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         # Load the Alien 8 bit image and set its rect attribute.
-        self.image = pygame.image.load('assets/imgs/bad_guy.bmp')
+        self.image = pygame.image.load('game/assets/bad_guy.bmp')
         self.rect = self.image.get_rect()
 
         # Start each new Alien near the top left of the screen.
@@ -40,7 +40,7 @@ class CreateFleet(Sprite):
         self.ship = ship
         self.aliens = pygame.sprite.Group()
         self.settings = ai_game.settings
-        self._create_fleet()
+        self.create_fleet()
 
     def draw(self, screen):
         self.aliens.draw(screen)
@@ -55,20 +55,24 @@ class CreateFleet(Sprite):
         self.aliens.add(alien)
 
     def update_aliens(self):
-        """Check if the fleet is at an edge, then update the positions of all alien frigates in the fleet."""
-        self._check_fleet_edges()
-        self.aliens.update()
 
-        # Look for alien-ship collisions.
-        if pygame.sprite.spritecollideany(self.ship, self.aliens):
-            self.ai_game.ship.ship_hit()
+        """Check if the game is active before attempting an update """
 
-        screen_rect = self.ai_game.screen.get_rect()
-        for alien in self.aliens.sprites():
-            if alien.rect.bottom >= screen_rect.bottom:
-                # Treat this the same as if the ship got hit.
+        if self.ai_game.stats.game_active:
+            # Check if the fleet is at an edge, then update the positions of all alien frigates in the fleet.
+            self._check_fleet_edges()
+            self.aliens.update()
+
+            # Look for alien-ship collisions.
+            if pygame.sprite.spritecollideany(self.ship, self.aliens):
                 self.ai_game.ship.ship_hit()
-                break
+
+            screen_rect = self.ai_game.screen.get_rect()
+            for alien in self.aliens.sprites():
+                if alien.rect.bottom >= screen_rect.bottom:
+                    # Treat this the same as if the ship got hit.
+                    self.ai_game.ship.ship_hit()
+                    break
 
     def _check_fleet_edges(self):
         """Respond appropriately if any Aliens have reached an edge."""
@@ -83,7 +87,7 @@ class CreateFleet(Sprite):
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.alien_direction *= -1
 
-    def _create_fleet(self):
+    def create_fleet(self):
         """Create the fleet of Alien frigates."""
         # Spacing between each Alien is equal to....  .
         # Make an alien.
