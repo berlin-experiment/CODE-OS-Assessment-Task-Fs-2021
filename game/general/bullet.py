@@ -1,11 +1,10 @@
-# Pew pew
 import pygame
+
 from pygame.sprite import Sprite
 
 
 class Bullet(Sprite):
     """A class to manage bullets fired from the ship"""
-
     def __init__(self, ai_game, direction):
         """Create a bullet object at the ship's current position."""
         super().__init__()
@@ -14,7 +13,6 @@ class Bullet(Sprite):
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.color = self.settings.bullet_color
-
         # Create a bullet rect at (0, 0) and then set correct position.
         self.rect = pygame.Rect(0, 0, self.settings.bullet_width,
                                 self.settings.bullet_height)
@@ -22,7 +20,6 @@ class Bullet(Sprite):
         # Store the bullet's position as a decimal value.
         self.y = float(self.rect.y)
 
-    # Checks if player shot, or intruder
     def update(self):
         if self.direction == "left":
             self.rect.x -= 1
@@ -35,13 +32,13 @@ class Bullet(Sprite):
         # Update the rect position.
         self.rect.y = self.y
 
-
     def draw_bullet(self):
         """Draw the bullet to the screen."""
         pygame.draw.rect(self.screen, self.color, self.rect)
 
 
 class PewPew:
+    """A class to manage the bullets, collisions and updates"""
     def __init__(self, ai_game):
         super().__init__()
         self.ai_game = ai_game
@@ -56,6 +53,7 @@ class PewPew:
             bullet.draw_bullet()
 
     def fire_bullet(self):
+        """Directions relate to power up"""
         directions = ["left", "center", "right"]
 
         if self.ai_game.stats.power_up_active:
@@ -96,22 +94,19 @@ class PewPew:
             elif bullet.rect.right >= self.ai_game.screen.get_width():
                 self.remove_bullet(bullet)
 
-
         self._check_bullet_collisions()
 
     def _check_bullet_collisions(self):
         """Respond to bullet-Alien collisions."""
-        # Remove any bullets and Alien that have collided.
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens.aliens, True, True)
 
         if collisions:
             for aliens in collisions.values():
-                # The level scroe multiplier does not work on the first level
+                # The level score multiplier does not work on the first level
                 level = 1
                 if not self.ai_game.stats.power_up_active:
                     self.bullets_fired -= 1
-
 
                 if self.ai_game.stats.level > 0:
                     level = self.ai_game.stats.level

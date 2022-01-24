@@ -3,7 +3,8 @@ import pygame
 from time import sleep
 
 
-# Ship is based on the Ornithopter from Dune
+# The ship is based on the Ornithopter from Dune, that's why it looks like a dragonfly
+# I drew the image using using PhotoScape X
 class Ship:
     """CLass to manage the ship"""
     def __init__(self, ai_game):
@@ -45,23 +46,13 @@ class Ship:
                 self.image = pygame.image.load('game/assets//please_work.bmp')
                 self.state = 1
                 self.count = 0
-            # self.image = pygame.image.load('assets/imgs/please_work.bmp')
-            # self.state = 1
+
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
 
         self.rect.x = self.x
-
-    def center_ship(self):
-        """Center the ship on the screen."""
-        self.rect.midbottom = self.screen_rect.midbottom
-        self.x = float(self.rect.x)
-
-    def blitme(self):
-        """Draw the ship aircraft at its current location."""
-        self.screen.blit(self.image, self.rect)
 
     def ship_hit(self):
         self.ai_game.stats.ships_left -= 1
@@ -80,3 +71,11 @@ class Ship:
             self.ai_game.aliens.create_fleet()
             sleep(1)
 
+    def center_ship(self):
+        """Center the ship on the screen."""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
+
+    def blitme(self):
+        """Draw the ship aircraft at its current location."""
+        self.screen.blit(self.image, self.rect)

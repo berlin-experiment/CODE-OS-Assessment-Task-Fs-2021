@@ -1,6 +1,8 @@
 import pygame
 
+
 class MainMenu:
+    """First menu displayed when launching the game"""
     def __init__(self, ai_game):
         self.ai_game = ai_game
         self.play_button = Button(ai_game, "Play")
@@ -18,6 +20,7 @@ class MainMenu:
 
 
 class RetryMenu:
+    """Menu displayed when player has died, options to retry and view final score"""
     def __init__(self, ai_game):
         self.ai_game = ai_game
         self.play_button = Button(ai_game, "Play")
@@ -69,7 +72,7 @@ class Button:
         self._prep_msg(msg)
 
     def _prep_msg(self, msg):
-        """Turn msg into a rendered image and center text on the button."""
+        """Turn message into a rendered image and center text on the button."""
         self.msg_image = self.font.render(msg, True, self.text_color,
                                           self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()

@@ -1,4 +1,5 @@
 class DefaultSettings:
+    """The default starting settings"""
     def __init__(self):
         # These settings are loaded as initial values, and are dynamic (change with game state)
         self.screen_width = 1200
@@ -31,5 +32,4 @@ class DefaultSettings:
         self.score_multiplier = 2
 
         # Power up time delay
-        self.power_up_timer = 5
-
+        self.power_up_timer = 3

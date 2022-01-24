@@ -1,18 +1,16 @@
 import pygame.font
 
-"""A class to report scoring information."""
-
 
 class Scoreboard:
-    """Initialize scorekeeping attributes."""
+    """A class to report scoring information."""
+    # Initialize score keeping attributes.
     def __init__(self, ai_game):
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
         self.settings = ai_game.settings
         self.stats = ai_game.stats
-    # Font settings for scoring information.
+        # Font settings for scoring information.
         self.bg_color = ai_game.settings.bg_color
-
         # Display the score at the top right of the screen.
         self.player_score = ScreenText(self.bg_color, "right", self.screen_rect.right - 20, 20, self.screen)
         # Display the number of slain enemies below the score.
@@ -23,13 +21,11 @@ class Scoreboard:
         self.current_level = ScreenText(self.bg_color, "left", self.screen_rect.left + 20, 20, self.screen)
         # Display the ships left below the levels.
         self.ships_left = ScreenText(self.bg_color, "left", self.screen_rect.left + 20, 60, self.screen)
-
         # Prepare the initial score image.
         self.prep_score()
 
     def prep_score(self):
         """Turn the score into a rendered image."""
-
         # Total score
         self.player_score.update_values("Score: " + self.rounder(self.stats.score))
         # Total enemies
@@ -60,14 +56,13 @@ class Scoreboard:
 
 
 class ScreenText:
+    """A class manage characteristics of scoring information."""
     def __init__(self, bg_color, side_of_screen, position_x, position_y, screen):
         self.screen = screen
         self.bg_color = bg_color
         self.image = None
         self.rect = None
-
         self.side_of_screen = side_of_screen
-
         self.pos_x = position_x
         self.pos_y = position_y
         self.text_color = (22, 146, 149)
@@ -87,7 +82,6 @@ class ScreenText:
             self.rect.right = self.pos_x
         else:
             self.rect.center = self.pos_x
-
 
         self.rect.top = self.pos_y
 

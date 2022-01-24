@@ -1,8 +1,6 @@
-
 class GameStats:
-    """Initialize statistics that can change during the game."""
     def __init__(self, ai_game):
-        """Initialize statistics."""
+        """Initialize statistics that can change during the game."""
         self.ai_game = ai_game
         self.reset_stats()
         self.high_score = 0
@@ -11,6 +9,7 @@ class GameStats:
         self.game_active = False
 
     def reset_stats(self):
+        """Reset the statistics when starting a new game on retry"""
         self.ai_game.ship.center_ship()
         self.ai_game.settings.restore_default_settings()
         self.settings = self.ai_game.settings
@@ -20,10 +19,10 @@ class GameStats:
         self.ships_left = self.ai_game.settings.ship_limit
 
     def level_up(self):
-        # If the game is active, increase the settings
+        # If the game is active, increase the settings with each level the player reaches
         if self.game_active:
             self.ai_game.settings.ship_speed += 0.5
-            self.ai_game.settings.alien_speed += 0.5
+            self.ai_game.settings.alien_speed += 0.7
             self.ai_game.settings.fleet_drop_speed += 2
             self.ai_game.settings.bullet_speed = 1.5
             self.level = self.level + 1
@@ -36,7 +35,9 @@ class GameStats:
             self.ai_game.sb.prep_score()
 
     def activate_power_up(self):
+        """On switch"""
         self.power_up_active = True
 
     def deactivate_power_up(self):
+        """Off switch"""
         self.power_up_active = False

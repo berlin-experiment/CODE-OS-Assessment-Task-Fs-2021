@@ -1,28 +1,46 @@
 # Stacey Kenny OS_01 Introduction to Software Engineering Assessment Task
 
-I have built - or rather half built - a DUNE inspired space invader game rather than a basic one using pygame, online YouTube tutorials and a lot of caffeine and crying.
+This PyGame is part of my CODE University Re-Assessment for OS_01 Software Engineering. While we were shown how to download VS Code, I prefer to use PyCharm and did so for this task.
 
-While we were shown how to download VS Code, I prefer to use PyCharm and did so for this task.
+Please note that all images were drawn by me using [PhotoScape X](http://x.photoscape.org/) and pure talent.
 
-- All images were drawn by me using [Photoscape X](http://x.photoscape.org/) and pure talent.
-  \*\* PS. My pygame assessment is inspired by DUNE by Frank Herbert and the names in the game are just Arabic translations to avoid copyright infringement.
+## The Game
+
+An Alien Invasion inspired by DUNE by Frank Herbert and that is the reason for the color scheme and game style.
 
 ## The Code
 
-While some things may appear familiar, others I adapted to make the project more unique and personal to myself.
-
-The Game is nowhere near complete, butI have tried to focus on structuring the game and code in a way I feel makes more sense and easier to follow, based on what I have seen on Stackoverflow and watch tutorials online.
-
 ```python
-import sys
-import pygame
-
-from .general.settings.settings import Settings
-from .general.bg import Background
-from .player.ship import Ship
-from .intruders.alien import CreateFleet
-from .general.bullet import PewPew
+# Starts the game
+if __name__ == '__main__':
+    # Make a game instance + run the game.
+    ai = AlrimalGame()
+    ai.run_game()
 ```
+
+Then game is built according to the Python Crash Course Project 1 found in chapters 12 to 14, 2nd Edition by E. Matthes as well as the instructions provided by the lecturers.
+The game has the following desired characteristics:
+- A start and retry menu (mouse only visibility when menu is),
+- Background + background animation,
+- Player ship, which can move left and right with the ability to fire bullets,
+- A fleet of aliens descending from above, their intensity increases with each passing level, 👾👾👾👾👾
+- 🍺 A GIFT FROM THE HEAVENS! 🍺 A magical ice-cold beer to help get you in the mood to fight, and
+- A score board of the current level, your current score, the highest score, fallen foes and how many repair kits (extra lives) you have left, if the alien ship crashes into yours, or passes you... your ship is very baldy damaged.
+
+The game has been structured into various folders (for example; assets, settings, player, etc.) to try give more structure to the game to be able to find and follow the code.
+![Code Structure](game/assets/game-code-structure.png)
+
+I know of two issues I am currently trying to fix;
+
+1. Hitting 'Q' for quit seems to send you into a waiting room with an unknown expected time of sit and stare...
+
+![intense confusion](https://c.tenor.com/rec5dlPBK2cAAAAS/mr-bean-waiting.gif)
+
+2. The Free beer is handed to you immediately when you press start if you do so fast enough, maybe a bug, maybe a feature. 🍻
+
+But working on these, but do not think I will this issues will be resolved before the submission date.
+
+I have also refactored the code according to the feedback provided via the CODE Learning Platform and hope the game is more fun to play now that it is more of a game and that the code is easier to follow.
 
 ## References
 

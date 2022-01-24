@@ -11,7 +11,7 @@ from .general.scoreboard import Scoreboard
 from .general.menus import *
 from .general.power_up import PowerUp
 
-# Alrimal means the Sandy in Arabic and is based on the Ornithopter from Dune
+# Alrimal means the Sandy in Arabic and is based on Dune (Space Movie)
 class AlrimalGame:
     """Overall class to manage game assets and behavior."""
     def __init__(self):
@@ -28,11 +28,11 @@ class AlrimalGame:
         self.bg = Background(self)
         self.Background = pygame.sprite.Group()
         self.Background.add(self.bg)
-        # creating player
+        # Creating player
         self.ship = Ship(self)
-        # creating enemy fleet
+        # Creating enemy fleet
         self.aliens = CreateFleet(self, self.ship)
-        # creating bullet
+        # Creating bullet
         self.bullets = PewPew(self)
         # Create an instance to store game statistics.
         self.stats = GameStats(self)
@@ -95,10 +95,10 @@ class AlrimalGame:
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
-
         self.screen.fill(self.settings.bg_color)
         self.Background.draw(self.screen)
 
+        # Updates games assets
         if self.stats.game_active:
             self.aliens.draw(self.screen)
             self.bullets.draw()
@@ -110,6 +110,3 @@ class AlrimalGame:
         self.active_menu.show_menu(self.stats.game_active)
 
         pygame.display.flip()
-
-
-
