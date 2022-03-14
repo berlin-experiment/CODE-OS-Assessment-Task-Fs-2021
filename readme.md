@@ -8,6 +8,12 @@ Please note that all images were drawn by me using [PhotoScape X](http://x.photo
 
 An Alien Invasion inspired by DUNE by Frank Herbert and that is the reason for the color scheme and game style.
 
+<br>
+<div align="center">
+<img alt-txt="Bad game preview gif" src="https://github.com/berlin-experiment/CODE-OS-Assessment-Task-Fs-2021/blob/master/game-preview.gif" width="400px">
+</div>
+<br>
+
 ## The Code
 
 ```python
@@ -28,13 +34,22 @@ The game has the following desired characteristics:
 - A score board of the current level, your current score, the highest score, fallen foes and how many repair kits (extra lives) you have left, if the alien ship crashes into yours, or passes you... your ship is very baldy damaged.
 
 The game has been structured into various folders (for example; assets, settings, player, etc.) to try give more structure to the game to be able to find and follow the code.
-![Code Structure](game/assets/game-code-structure.png)
+
+<br>
+<div>
+<img alt-txt="File Structure" src="game/assets/game-code-structure.png" width="200px">
+</div>
+<br>
 
 I know of two issues I am currently trying to fix;
 
 1. Hitting 'Q' for quit seems to send you into a waiting room with an unknown expected time of sit and stare...
 
-![intense confusion](https://c.tenor.com/rec5dlPBK2cAAAAS/mr-bean-waiting.gif)
+<br>
+<div align="center">
+<img alt-txt="Endless Waiting Due to Issue" src="https://c.tenor.com/rec5dlPBK2cAAAAS/mr-bean-waiting.gif" width="300px">
+</div>
+<br>
 
 2. The Free beer is handed to you immediately when you press start if you do so fast enough, maybe a bug, maybe a feature. 🍻
 
